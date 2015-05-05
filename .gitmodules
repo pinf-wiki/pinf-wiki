@@ -13,3 +13,6 @@ url=git@github.com:pinf-wiki/standard-edition.git
 [submodule ".deps/github.com~pinf-to~pinf-to-pio~0/source/installed/master"]
 	path = .deps/github.com~pinf-to~pinf-to-pio~0/source/installed/master
 	url = git@github.com:pinf-to/pinf-to-pio.git
+[submodule ".deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-openshift.git

@@ -46,6 +46,15 @@
             ],
             "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-mozilla-firefox-profile~0/source/installed/master",
             "install": true
+        },
+        "bash.origin.php": "{{__DIRNAME__}}/.deps/github.com~bash-origin~bash.origin.php~0/source/installed/master",
+        "pinf-to-openshift": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-openshift~0/source/installed/master",
+            "install": true
         }
     }
 }
