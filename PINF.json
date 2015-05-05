@@ -5,8 +5,11 @@
     "config": {
         "pinf.wiki/0": {
             "$to": "pinf.wiki",
-            "run": {
+            "dev": {
                 "homepage": "{{$from.browser.homepage}}"
+            },
+            "live": {
+                "homepage": "{{$from.live.app.url}}"
             }
         },
         "genesis.pinf.org/0": {
@@ -19,6 +22,14 @@
             "browserVersion": "40.0a1",
             "browserRelease": "nightly",
             "homepage": "http://localhost:{{$from.pgs.programs.server.getRuntimeConfigFor(server).docker.port}}"
+        },
+        "github.com/pinf-to/pinf-to-openshift/0": {
+            "$to": "live",
+            "sourcePath": "{{$from.pgs.programs.server.getRuntimeConfigFor(server).sourcePath}}",
+            "openshift": {
+                "app": "pinfwiki",
+                "cartridge": "php-5.4"
+            }
         }
     },
     "mappings": {

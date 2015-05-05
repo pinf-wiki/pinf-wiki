@@ -1,10 +1,14 @@
 {
-  "name": "pinf.wiki",
-  "version": "0.1.0",
-  "dependencies": {
-    "bash.origin": "0.1.x"
-  },
-  "scripts": {
-    "install": "./bin/install"
-  }
+    "@extends": {
+        "vortex.default": "/pinf.genesis/04-pinf.wiki/.pgs/vortex.default/*.proto.json"
+    },
+    "uid": "DCD58BD1-D39E-4B7E-A438-E94286B01CE3",
+    "name": "pinf.wiki",
+    "version": "0.1.0",
+    "dependencies": {
+        "bash.origin": "0.1.x"
+    },
+    "scripts": {
+        "install": "./bin/install"
+    }
 }
