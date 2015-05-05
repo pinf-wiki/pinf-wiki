@@ -1,0 +1,36 @@
+{
+	"name": "pinf.wiki-server",
+	"boot": {
+		"config": "pinf.wiki/server/0",
+		"package": "./package.json"
+	},
+	"config": {
+		"pinf.wiki/server/0": {
+			"$to": "boot",
+			"run": {
+				"template": "http://{{$from.server.template}}"
+			}
+		},
+		"github.com/pinf-to/pinf-to-pio/0": {
+			"$to": "network",
+			"ports": {
+				"phpserver": "{{getFreePort()}}"
+			}
+		},
+		"github.com/pinf-to/pinf-to-docker/0": {
+			"$to": "server",
+			"name": "firephp-server",
+			"template": "phpfpm-apache",
+			"sourcePath": "{{__DIRNAME__}}",
+			"bindSourcePath": false,
+			"docker": {
+				"DOCKER_TLS_VERIFY": "{{!env.DOCKER_TLS_VERIFY}}",
+				"DOCKER_HOST": "{{!env.DOCKER_HOST}}",
+				"DOCKER_CERT_PATH": "{{!env.DOCKER_CERT_PATH}}",
+				"username": "cadorn",
+				"tag": "dev",
+				"port": "{{$from.network.ports.phpserver}}"
+			}
+		}
+	}
+}

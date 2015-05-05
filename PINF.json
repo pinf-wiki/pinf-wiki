@@ -1,0 +1,51 @@
+{
+    "boot": {
+        "config": "pinf.wiki/0"
+    },
+    "config": {
+        "pinf.wiki/0": {
+            "$to": "pinf.wiki",
+            "run": {
+                "homepage": "{{$from.browser.homepage}}"
+            }
+        },
+        "genesis.pinf.org/0": {
+            "programs": {
+                "server": "{{__DIRNAME__}}/server/program.json"
+            }
+        },
+        "github.com/pinf-to/pinf-to-mozilla-firefox-profile/0": {
+            "$to": "browser",
+            "browserVersion": "40.0a1",
+            "browserRelease": "nightly",
+            "homepage": "http://localhost:{{$from.pgs.programs.server.getRuntimeConfigFor(server).docker.port}}"
+        }
+    },
+    "mappings": {
+        "pinf-to-pio": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-pio~0/source/installed/master",
+            "install": true
+        },
+        "pinf-to-docker": {
+            "depends": [
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-docker~0/source/installed/master",
+            "install": true
+        },
+        "pinf-to-mozilla-firefox-profile": {
+            "depends": [
+                "smi.cli",
+                "bash.origin",
+                "to.pinf.lib"
+            ],
+            "location": "{{__DIRNAME__}}/.deps/github.com~pinf-to~pinf-to-mozilla-firefox-profile~0/source/installed/master",
+            "install": true
+        }
+    }
+}

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Source https://github.com/cadorn/bash.origin
+. "$HOME/.bash.origin"
+function init {
+	eval BO_SELF_BASH_SOURCE="$BO_READ_SELF_BASH_SOURCE"
+	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"
+	local __BO_DIR__="$___TMP___"
+
+	# TODO: Move this into generic facility in genesis.pinf.org
+
+	pushd "$__BO_DIR__/.." > /dev/null
+		if [ -e ".pgs/.provisioned" ]; then
+			return 0
+		fi
+
+		BO_callPlugin "bash.origin.pinf@0.1.1" ensure genesis $@
+
+		. "$__BO_DIR__/../boot" activate
+
+		# TODO: Refactor to dynamically call install on each sub-program.
+		BO_sourcePrototype "server/install"
+
+	popd > /dev/null
+}
+init $@

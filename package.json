@@ -1,0 +1,10 @@
+{
+  "name": "pinf.wiki",
+  "version": "0.1.0",
+  "dependencies": {
+    "bash.origin": "0.1.x"
+  },
+  "scripts": {
+    "install": "./bin/install"
+  }
+}

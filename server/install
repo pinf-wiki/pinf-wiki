@@ -1,0 +1,41 @@
+#!/bin/bash
+# Source https://github.com/cadorn/bash.origin
+. "$HOME/.bash.origin"
+function init {
+	eval BO_SELF_BASH_SOURCE="$BO_READ_SELF_BASH_SOURCE"
+	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"
+	local __BO_DIR__="$___TMP___"
+
+
+	. "$__BO_DIR__/../boot" activate
+
+	pushd "$__BO_DIR__" > /dev/null
+
+		pushd "$__BO_DIR__/symfony-cmf" > /dev/null
+
+			# Put configuration into place.
+			cp -f "$__BO_DIR__/config/parameters.yml" "app/config/parameters.yml"
+
+			# Install with composer.
+			BO_callPlugin "bash.origin.php@0.1.0" composer install
+
+			# TODO: Look into why this needs to be done and how we can avoid it.
+#			rm -f app/.htaccess
+
+			# TODO: Allow '172.17.x.x' from $_SERVER["REMOTE_ADDR"] in 'app/web/app_dev.php'
+
+			# @see http://symfony.com/doc/master/cmf/book/installation.html#set-up-the-database
+			if [ ! -e "app/cache/dev/doctrine" ]; then
+				# TODO: Automatically say yes to purging DB.
+				php app/console doctrine:database:create
+				php app/console doctrine:phpcr:init:dbal
+				php app/console doctrine:phpcr:repository:init
+				php app/console doctrine:phpcr:fixtures:load
+			fi
+			
+
+		popd > /dev/null
+	popd > /dev/null
+
+}
+init $@
