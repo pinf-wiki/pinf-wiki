@@ -1,3 +1,15 @@
 [submodule "server/symfony-cmf"]
 	path = server/symfony-cmf
 	url = git@github.com:symfony-cmf/standard-edition.git
+[submodule ".deps/github.com~bash-origin~bash.origin.php~0/source/installed/master"]
+	path = .deps/github.com~bash-origin~bash.origin.php~0/source/installed/master
+	url = git@github.com:bash-origin/bash.origin.php.git
+[submodule ".deps/github.com~pinf-to~pinf-to-docker~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-docker~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-docker.git
+[submodule ".deps/github.com~pinf-to~pinf-to-mozilla-firefox-profile~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-mozilla-firefox-profile~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-mozilla-firefox-profile.git
+[submodule ".deps/github.com~pinf-to~pinf-to-pio~0/source/installed/master"]
+	path = .deps/github.com~pinf-to~pinf-to-pio~0/source/installed/master
+	url = git@github.com:pinf-to/pinf-to-pio.git
